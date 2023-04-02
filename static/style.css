@@ -1,0 +1,14 @@
+.jumbotron {
+    background-color: #f4511e;
+    color: #fff;
+    padding: 100px 25px;
+  }
+  
+  .form-group label {
+    font-weight: bold;
+  }
+  
+  .alert {
+    margin-top: 50px;
+  }
+  

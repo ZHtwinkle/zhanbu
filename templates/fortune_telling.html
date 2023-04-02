@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>占卜页面</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="/">占卜网站</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">主页</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/fortune-telling">占卜</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    
+    <div class="container mt-4">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <form action="{{ url_for('fortune_telling_post') }}" method="POST">
+            <div class="form-group">
+              <label for="zodiac">星座：</label>
+              <select class="form-control" id="zodiac" name="zodiac">
+                <option selected disabled>请选择星座</option>
+                <option value="白羊座">白羊座</option>
+                <option value="金牛座">金牛座</option>
+                <option value="双子座">双子座</option>
+                <option value="巨蟹座">巨蟹座</option>
+                <option value="狮子座">狮子座</option>
+                <option value="处女座">处女座</option>
+                <option value="天秤座">天秤座</option>
+                <option value="天蝎座">天蝎座</option>
+                <option value="射手座">射手座</option>
+                <option value="摩羯座">摩羯座</option>
+                <option value="水瓶座">水瓶座</option>
+                <option value="双鱼座">双鱼座</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="age">年龄：</label>
+              <input type="number" class="form-control" id="age" name="age" placeholder="请输入年龄">
+            </div>
+            <div class="form-group">
+              <label for="question">问题：</label>
+              <textarea class="form-control" id="question" name="question" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">提交</button>
+          </form>
+          
+          {% if answer %}
+          <div class="mt-4 alert alert-success">
+            <h4 class="alert-heading">占卜结果：</h4>
+            <p>{{ answer }}</p>
+            <hr>
+            <p class="mb-0">感谢使用占卜网站！</p>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </body>
+</html>
